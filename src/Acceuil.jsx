@@ -156,7 +156,7 @@ export default function Acceuil() {
                         <p>Aucune donnée à afficher.</p>
                     ) : (
                         <PieChart width={340} height={300}>
-                            <Pie data={donneesGraphique} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} label/>
+                            <Pie data={donneesGraphique} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} />
                             <Tooltip />
                             <Legend />
                         </PieChart>
