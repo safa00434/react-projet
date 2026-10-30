@@ -138,9 +138,11 @@ export default function Acceuil() {
                                 <td>{calculerDuree(t.dateDebut, t.dateFin)}</td>
                                 <td>{t.name}</td>
                                 <td>{t.statut}</td>
-                                <td className="MSbtn">
+                                <td>
+                                    <div className="MSbtn">
                                     <button className="btn-modifier" type="button" onClick={() => ModifierTache(indexReel)}> Modifier</button>
                                     <button className="btn-supprimer" type="button" onClick={() => SupprimerTache(indexReel)}>Supprimer</button>
+                                    </div>
                                 </td>
                             </tr>
                         );
