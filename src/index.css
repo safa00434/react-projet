@@ -1,253 +1,195 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    display: block;
-    background: #f4f5f7;
-    color: #1f2937;
-    font-family: "Segoe UI", system-ui, Arial, sans-serif;
+  margin: 0;
+  display: block;
+  background: #f4f5f7;
+  color: #1f2937;
+  font-family: "Segoe UI", system-ui, Arial, sans-serif;
 }
 
 #root {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    border: none;
-    text-align: left;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
 }
 
-.page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px 20px 40px;
+h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 24px 0 8px;
 }
 
-.titre {
-    margin: 0 0 20px;
-    font-size: 28px;
-    font-weight: 600;
-    text-align: center;
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
 }
 
-/* cartes de chiffres */
-.kpis {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
+/* ===== mise en page ===== */
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.kpi {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 12px 16px;
+/* ===== formulaire ===== */
+form {
+  width: 300px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
 }
 
-.kpi p {
-    margin: 0;
-    font-size: 13px;
-    color: #6b7280;
+form > div {
+  margin-bottom: 12px;
 }
 
-.kpi strong {
-    font-size: 26px;
-    font-weight: 600;
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: left;
 }
 
-/* mise en page : formulaire à gauche, tableau à droite */
-.layout {
-    display: grid;
-    grid-template-columns: 280px minmax(0, 1fr);
-    gap: 20px;
-    align-items: start;
+input,
+.champ select {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2937;
+  font-size: 14px;
+  outline: none;
 }
 
-.colonne-gauche {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+input:focus,
+.champ select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.carte {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 16px;
+.btn {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 14px 0 0;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-/* formulaire */
-.champ {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
+.btn:hover {
+  background: #1d4ed8;
 }
 
-.champ label {
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 4px;
+/* ===== zone tableau ===== */
+.zone-tableau {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
 }
 
-.champ input,
-.champ select,
 .recherche {
-    width: 100%;
-    height: 38px;
-    padding: 0 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 14px;
-    color: #1f2937;
-}
-
-.champ input:focus,
-.champ select:focus,
-.recherche:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-.btn-principal {
-    width: 100%;
-    height: 40px;
-    margin-top: 4px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.btn-principal:hover {
-    background: #1d4ed8;
-}
-
-.btn-annuler {
-    width: 100%;
-    height: 36px;
-    margin-top: 8px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #fff;
-    color: #374151;
-    cursor: pointer;
-}
-
-/* graphique */
-.graphique {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.graphique h2 {
-    margin: 0 0 8px;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-/* tableau */
-.recherche {
-    margin-bottom: 14px;
+  width: 100%;
+  margin-bottom: 14px;
 }
 
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
 .table th {
-    text-align: left;
-    font-size: 12px;
-    font-weight: 600;
-    color: #6b7280;
-    padding: 10px 12px;
-    border-bottom: 2px solid #e5e7eb;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid #e5e7eb;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
 }
 
 .table td {
-    padding: 12px;
-    border-bottom: 1px solid #f0f1f3;
-    vertical-align: middle;
+  padding: 12px;
+  border: none;
+  border-bottom: 1px solid #f0f1f3;
+  vertical-align: middle;
 }
 
 .table tbody tr:hover {
-    background: #f9fafb;
+  background: #f9fafb;
 }
 
-.vide {
-    text-align: center;
-    color: #6b7280;
-    margin: 20px 0 4px;
-    font-size: 14px;
-}
-
-/* badges de statut */
-.badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.badge-faire {
-    background: #fde8e8;
-    color: #a32d2d;
-}
-
-.badge-cours {
-    background: #fdf1d3;
-    color: #7a5200;
-}
-
-.badge-termine {
-    background: #dcf3dc;
-    color: #1d6b1d;
-}
-
-/* boutons Modifier / Supprimer */
+/* ===== boutons modifier / supprimer ===== */
 .MSbtn {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 .MSbtn button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.btn-modifier {
-    background: #2563eb;
-}
-
-.btn-supprimer {
-    background: #dc2626;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .MSbtn button:hover {
-    opacity: 0.88;
+  opacity: 0.88;
 }
 
-/* petits écrans */
+.btn-modifier {
+  background: #2563eb;
+}
+
+.btn-supprimer {
+  background: #dc2626;
+}
+
+/* ===== graphique ===== */
+.graphique {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
 @media (max-width: 860px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-    .kpis {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .container {
+    flex-direction: column;
+  }
+  form {
+    width: 100%;
+  }
+  .zone-tableau {
+    width: 100%;
+  }
 }
