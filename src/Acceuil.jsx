@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import { PieChart, Pie, Tooltip, Legend } from "recharts";
 
 //calcul durée
@@ -16,7 +16,10 @@ export default function Acceuil() {
     const[dateFValue,SetdateFValue]=useState("");
     const[resValue,SetresValue]=useState("");
     const[Statut,SetStatut]=useState("à faire");
-    const[tache, SetTache]=useState([]);
+    // charger les tâches sauvegardées dans le navigateur
+    const[tache, SetTache]=useState(() => {
+    const sauvegarde = localStorage.getItem("taches");
+        return sauvegarde ? JSON.parse(sauvegarde) : [];});
     const[editIndex, SeteditIndex]=useState(null);
     const[Recherche, SetRecherche]=useState("");
     
@@ -93,8 +96,14 @@ export default function Acceuil() {
     function estEnRetard(t) {
         return t.dateFin < aujourdhui && t.statut !== "terminé" ;
     }
-
+    
+    //list des tâches en retard
     const tachesEnRetard = tache.filter(estEnRetard);
+
+    //sauvegarder automatiquement les tâches
+    useEffect (() => {
+        localStorage.setItem("taches", JSON.stringify(tache));
+    }, [tache]);
 
 
     return(
