@@ -87,7 +87,14 @@ export default function Acceuil() {
 
     //total tâches
     const TotalTaches = [tache.reduce(acc => acc + 1, 0 )]
+    //tâche en retard
+    const aujourdhui = new Date().toLocaleDateString("en-CA");
 
+    function estEnRetard(t) {
+        return t.dateFin < aujourdhui && t.statut !== "terminé" ;
+    }
+
+    const tachesEnRetard = tache.filter(estEnRetard);
 
 
     return(
@@ -122,6 +129,19 @@ export default function Acceuil() {
                 </div>
             </form>
             <div className="zone-tableau">
+
+                {tachesEnRetard.length > 0 && (
+                <div className="alerte-retard">
+                    <strong>{tachesEnRetard.length} tâche(s) en retard</strong>
+                    <ul>
+                        {tachesEnRetard.map((t) => (
+                            <li key={tache.indexOf(t)}>
+                                {t.tache} - {t.name} (fin prévue : {t.dateFin})
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
                 <input type="text" className="recherche" placeholder="rechercher une tâche" value={Recherche} onChange={(e)=>SetRecherche(e.target.value)}/>
 
 
@@ -140,11 +160,13 @@ export default function Acceuil() {
                             const indexReel = tache.indexOf(t);
                             
                             return(
-                                <tr key={indexReel}>
+                                <tr key={indexReel} className={estEnRetard(t) ? "ligne-retard" : ""}>
                                 <td>{t.tache}</td>
                                 <td>{calculerDuree(t.dateDebut, t.dateFin)}</td>
                                 <td>{t.name}</td>
-                                <td>{t.statut}</td>
+                                <td>{t.statut}
+                                    {estEnRetard(t) && <span className="tag-retard">En retard</span>  }
+                                </td>
                                 <td>
                                     <div className="MSbtn">
                                     <button className="btn-modifier" type="button" onClick={() => ModifierTache(indexReel)}> Modifier</button>
@@ -157,7 +179,7 @@ export default function Acceuil() {
                     </tbody>
                     <div className="toTache">
                         <h2>Nombre total des tâches</h2>    
-                        <span> {TotalTaches} </span>
+                        <span id="spanme"> {TotalTaches} </span>
                     </div>
                 </table>
                 <div className="graphique">
