@@ -26,6 +26,10 @@ export default function Acceuil() {
             alert("Remplir tous les champs!")
             return;
         }
+        if(dateFValue<dateDValue){
+            alert("la date de fin doit être supérieure à la date de début")
+            return;
+        }
         const NouvelleTache = {
             tache:inputValue,
             dateDebut:dateDValue,
@@ -40,7 +44,7 @@ export default function Acceuil() {
             SeteditIndex(null);
         }
         
-        
+
         SetinputValue("");
         SetdateDValue("");
         SetdateFValue("");
@@ -64,7 +68,7 @@ export default function Acceuil() {
     }
     //search
     const tachesFiltrees = tache.filter((t) =>
-    t.tache.toLowerCase().includes(Recherche.toLowerCase()) || t.name.toLowerCase().includes(Recherche.toLowerCase()) || t.statut.toLowerCase().includes(Recherche.toLowerCase())
+    t.tache.toLowerCase().includes(Recherche.toLowerCase())
     );
     //graphe
     const COULEURS = {
@@ -80,6 +84,9 @@ export default function Acceuil() {
         fill: COULEURS[s],
     }))
     .filter((d) => d.value > 0);
+
+    //total tâches
+    const TotalTaches = [tache.reduce(acc => acc + 1, 0 )]
 
 
 
@@ -148,6 +155,10 @@ export default function Acceuil() {
                         );
                     })}
                     </tbody>
+                    <div className="toTache">
+                        <h2>Nombre total des tâches</h2>    
+                        <span> {TotalTaches} </span>
+                    </div>
                 </table>
                 <div className="graphique">
                     <h2>Répartition par statut</h2>
@@ -156,7 +167,7 @@ export default function Acceuil() {
                         <p>Aucune donnée à afficher.</p>
                     ) : (
                         <PieChart width={340} height={300}>
-                            <Pie data={donneesGraphique} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} />
+                            <Pie data={donneesGraphique} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={110} />
                             <Tooltip />
                             <Legend />
                         </PieChart>

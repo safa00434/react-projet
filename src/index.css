@@ -32,7 +32,7 @@ h2 {
   margin: 0 0 8px;
 }
 
-/* ===== mise en page ===== */
+
 .container {
   display: flex;
   align-items: flex-start;
@@ -42,7 +42,6 @@ h2 {
   padding: 20px;
 }
 
-/* ===== formulaire ===== */
 form {
   width: 300px;
   flex-shrink: 0;
@@ -102,7 +101,6 @@ input:focus,
   background: #1d4ed8;
 }
 
-/* ===== zone tableau ===== */
 .zone-tableau {
   flex: 1;
   min-width: 0;
@@ -145,7 +143,6 @@ input:focus,
   background: #f9fafb;
 }
 
-/* ===== boutons modifier / supprimer ===== */
 .MSbtn {
   display: flex;
   gap: 6px;
@@ -172,7 +169,6 @@ input:focus,
   background: #dc2626;
 }
 
-/* ===== graphique ===== */
 .graphique {
   display: flex;
   flex-direction: column;
@@ -192,4 +188,23 @@ input:focus,
   .zone-tableau {
     width: 100%;
   }
+}
+.toTache{
+  border: 2px solid gray;
+  padding: 10px;
+  width: 45%;
+  border-radius: 10%;
+  margin-top: 25px;
+}
+.toTache h2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+}
+span{
+  font-size: 30px;
+  font-weight: 600;
+  color: #2563eb;
+  padding-left: 25px;
+
 }
